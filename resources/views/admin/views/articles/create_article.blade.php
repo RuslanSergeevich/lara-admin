@@ -11,7 +11,7 @@
                     <h3 class="box-title">Новая статья</h3>
                 </div>
                 <div class="box-body">
-                    {!! Form::open(['url' => 'foo/bar']) !!}
+                    {!! Form::open(['url' => 'admin/articles']) !!}
                     {!! Form::label('Title') !!}
                     {!! Form::text('title', null, array('required', 'class'=>'form-control', 'placeholder'=>'Title cтатьи')) !!}<br/>
                     {!! Form::label('Keywords') !!}
@@ -25,17 +25,13 @@
                     {!! Form::label('Текст cтатьи') !!}
                     {!! Form::textarea('text', null, array('required', 'class'=>'form-control', 'placeholder'=>'Текст cтатьи')) !!}<br/>
                     {!! Form::label('Краткое описание cтатьи') !!}
-                    {!! Form::textarea('small_text', null, array('required', 'class'=>'form-control', 'placeholder'=>'Краткое описание cтатьи')) !!}<br/>
+                    {!! Form::textarea('small_text', null, array('class'=>'form-control', 'placeholder'=>'Краткое описание cтатьи')) !!}<br/>
                     {!! Form::label('Публикация статьи') !!}<br/>
-                    Опубликовано: {!! Form::checkbox('published', null, array('class'=>'form-control')) !!}
-                    {!! Form::button('Добавить статью', array('class'=>'btn btn-block btn-primary')) !!}<br/>
+                    Опубликовано: {!! Form::checkbox('published', 1, array('class'=>'form-control')) !!}<br/><br/>
+                    {!! Form::submit('Добавить статью', array('class'=>'btn btn-primary')) !!}<br/>
                     {!! Form::close() !!}
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer">
-                    Footer
-                </div>
-                <!-- /.box-footer-->
             </div>
             <!-- /.box -->
 

@@ -4,7 +4,7 @@ Route::get('/admin', 'Admin\AdminControllerIndex@index');
 Route::resource('/admin/pages', 'Admin\AdminControllerPages');
 Route::resource('/admin/articles', 'Admin\AdminControllerArticles');
 Route::resource('/admin/news', 'Admin\AdminControllerNews');
-Route::resource('/admin/guestbook', 'Admin\AdminControllerGuestbook');
+Route::resource('/admin/comments', 'Admin\AdminControllerComments');
 
 Route::get('/home', 'HomeController@index');
 

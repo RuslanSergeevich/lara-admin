@@ -3,84 +3,58 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Articles;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Request;
+use Flash;
 
 class AdminControllerArticles extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $articles = Articles::all();
         return view('admin.views.articles.articles', compact('articles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.views.articles.create_article');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $input = Request::all();
+        $input['img'] = '';
+        $input['published_at'] = Carbon::now();
+        Articles::create($input);
+        return redirect('admin/articles')->with('flash_message', 'Статья успешно создана!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+
+        $article = Articles::findOrFail($id);
+        return view('admin.views.articles.edit_article', compact('article'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+
+        $article = Articles::findOrFail($id);
+        $article->update(Request::all());;
+        return redirect('admin/articles')->with('flash_message', 'Статья успешно отредактирована!');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $article = Articles::findOrFail($id);
+        $article->delete();
+        return redirect('admin/articles')->with('flash_message', 'Статья успешно удалена!');
+
     }
 }

@@ -4,19 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Articles extends Model
+class Guestbook extends Model
 {
     protected $fillable = [
-        'id',
-        'title',
-        'description',
-        'keywords',
-        'url',
         'name',
+        'email',
         'text',
-        'small_text',
+        'answer_text',
         'published',
-        'img',
         'published_at',
         'updated_at'
     ];

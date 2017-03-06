@@ -8,6 +8,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -101,7 +102,7 @@
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="{{ url('/admin/guestbook') }}">
+                    <a href="{{ url('/admin/comments') }}">
                         <i class="fa fa-fw fa-users"></i> <span>Отзывы</span>
                     </a>
                 </li>
@@ -126,7 +127,6 @@
     </footer>
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery 2.2.3 -->
 <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->

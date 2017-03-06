@@ -8,7 +8,7 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Статьи</h3>
+                            <h3 class="box-title">Отзывы</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -30,17 +30,17 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($articles as $article)
+                                @foreach($comments as $comment)
                                     <tr>
-                                        <td>{{$article->id}}</td>
-                                        <td>{{$article->name}}</td>
-                                        <td>{{$article->url}}</td>
-                                        <td>{{$article->updated_at->format('d-m-Y h:i:s')}}</td>
-                                        <td>@if ($article->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
-                                        <td class="button-width"><a href="/admin/articles/{{$article->id}}/edit">
-                                            <button type="button" class="btn btn-primary">Редактировать</button></a>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$article->id}}">Удалить</button>
-                                            <div class="modal fade" id="{{$article->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <td>{{$comment->id}}</td>
+                                        <td>{{$comment->name}}</td>
+                                        <td>{{$comment->url}}</td>
+                                        <td>{{$comment->updated_at->format('d-m-Y h:i:s')}}</td>
+                                        <td>@if ($comment->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
+                                        <td class="button-width"><a href="/admin/articles/{{$comment->id}}/edit">
+                                                <button type="button" class="btn btn-primary">Редактировать</button></a>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$comment->id}}">Удалить</button>
+                                            <div class="modal fade" id="{{$comment->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -52,7 +52,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Закрыть</button>
-                                                            {!! Form::open(['method' => 'DELETE', 'action' => ['Admin\AdminControllerArticles@destroy', $article->id]]) !!}
+                                                            {!! Form::open(['method' => 'DELETE', 'action' => ['Admin\AdminControllerComments@destroy', $comment->id]]) !!}
                                                             {!! Form::submit('Удалить', array('class'=>'btn btn-danger')) !!}
                                                             {!! Form::close() !!}
                                                         </div>
@@ -74,7 +74,7 @@
                                 </tr>
                                 </tfoot>
                             </table>
-                            <a href="/admin/articles/create"><button type="button" class="btn btn-primary">Добавить статью</button></a>
+                            <a href="/admin/comments/create"><button type="button" class="btn btn-primary">Добавить отзыв</button></a>
                         </div>
                         <!-- /.box-body -->
                     </div>

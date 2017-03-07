@@ -8,7 +8,7 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Новости</h3>
+                            <h3 class="box-title">Список новостей</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">

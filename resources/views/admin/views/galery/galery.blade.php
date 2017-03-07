@@ -8,7 +8,7 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Список блоков</h3>
+                            <h3 class="box-title">Список галерей</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -23,24 +23,22 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Название</th>
-                                    <th>Системное имя</th>
                                     <th>Дата изменения</th>
                                     <th>Публикация</th>
                                     <th>Действие</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($boxes as $box)
+                                @foreach($gallery as $item)
                                     <tr>
-                                        <td>{{$box->id}}</td>
-                                        <td>{{$box->name}}</td>
-                                        <td>{{$box->system_name}}</td>
-                                        <td>{{$box->updated_at->format('d-m-Y h:i:s')}}</td>
-                                        <td>@if ($box->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
-                                        <td class="button-width"><a href="/admin/boxes/{{$box->id}}/edit">
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->name}}</td>
+                                        <td>{{$item->updated_at->format('d-m-Y h:i:s')}}</td>
+                                        <td>@if ($item->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
+                                        <td class="button-width"><a href="/admin/boxes/{{$item->id}}/edit">
                                                 <button type="button" class="btn btn-primary">Редактировать</button></a>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$box->id}}">Удалить</button>
-                                            <div class="modal fade" id="{{$box->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$item->id}}">Удалить</button>
+                                            <div class="modal fade" id="{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -52,7 +50,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Закрыть</button>
-                                                            {!! Form::open(['method' => 'DELETE', 'action' => ['Admin\AdminControllerPages@destroy', $box->id]]) !!}
+                                                            {!! Form::open(['method' => 'DELETE', 'action' => ['Admin\AdminControllerPages@destroy', $item->id]]) !!}
                                                             {!! Form::submit('Удалить', array('class'=>'btn btn-danger')) !!}
                                                             {!! Form::close() !!}
                                                         </div>
@@ -67,14 +65,13 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Название</th>
-                                    <th>Системное имя</th>
                                     <th>Дата изменения</th>
                                     <th>Публикация</th>
                                     <th>Действие</th>
                                 </tr>
                                 </tfoot>
                             </table>
-                            <a href="/admin/boxes/create"><button type="button" class="btn btn-primary">Добавить блок</button></a>
+                            <a href="/admin/gallery/create"><button type="button" class="btn btn-primary">Добавить галерею</button></a>
                         </div>
                         <!-- /.box-body -->
                     </div>

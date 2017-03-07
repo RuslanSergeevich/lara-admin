@@ -11,7 +11,7 @@
                     <h3 class="box-title">Редактирование статьи</h3>
                 </div>
                 <div class="box-body">
-                    {!! Form::open(['method' => 'PATCH', 'action' => ['Admin\AdminControllerArticles@update', $article->id]]) !!}
+                    {!! Form::open(['method' => 'PATCH', 'enctype' => 'multipart/form-data', 'files' => true, 'action' => ['Admin\AdminControllerArticles@update', $article->id]]) !!}
                     {!! Form::label('Title') !!}
                     {!! Form::text('title', $article->title, array('required', 'class'=>'form-control', 'placeholder'=>'Title cтатьи')) !!}<br/>
                     {!! Form::label('Keywords') !!}
@@ -20,6 +20,9 @@
                     {!! Form::text('description', $article->description, array('class'=>'form-control', 'placeholder'=>'Description cтатьи')) !!}<br/>
                     {!! Form::label('URL cтатьи') !!}
                     {!! Form::text('url', $article->url, array('required', 'class'=>'form-control translit', 'placeholder'=>'URL cтатьи')) !!}<br/>
+                    {!! Form::label('Изображение') !!}<br/>
+                    @if(!empty($article->img))<img src="/images/articles/thumb_{!! $article->img !!}" class="img-thumbnail"><br/><br/>@endif
+                    {!! Form::file('img', null) !!}<br/>
                     {!! Form::label('Название cтатьи') !!}
                     {!! Form::text('name', $article->name, array('required', 'class'=>'form-control', 'placeholder'=>'Название cтатьи')) !!}<br/>
                     {!! Form::label('Текст cтатьи') !!}

@@ -11,7 +11,7 @@
                     <h3 class="box-title">Новая новость</h3>
                 </div>
                 <div class="box-body">
-                    {!! Form::open(['url' => 'admin/news']) !!}
+                    {!! Form::open(['url' => 'admin/news', 'enctype' => 'multipart/form-data', 'files' => true]) !!}
                     {!! Form::label('Title') !!}
                     {!! Form::text('title', null, array('required', 'class'=>'form-control', 'placeholder'=>'Title новости')) !!}<br/>
                     {!! Form::label('Keywords') !!}
@@ -20,6 +20,8 @@
                     {!! Form::text('description', null, array('class'=>'form-control', 'placeholder'=>'Description новости')) !!}<br/>
                     {!! Form::label('URL новости') !!}
                     {!! Form::text('url', null, array('required', 'class'=>'form-control translit', 'placeholder'=>'URL новости')) !!}<br/>
+                    {!! Form::label('Изображение') !!}
+                    {!! Form::file('img', null) !!}<br/>
                     {!! Form::label('Название новости') !!}
                     {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Название новости')) !!}<br/>
                     {!! Form::label('Текст новости') !!}

@@ -85,7 +85,11 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">Навигация</li>
-
+                <li class="treeview">
+                    <a href="{{ url('/admin/menu') }}">
+                        <i class="fa fa-fw fa-dropbox"></i> <span>Меню сайта</span>
+                    </a>
+                </li>
                 <li class="treeview">
                     <a href="{{ url('/admin/pages') }}">
                         <i class="fa fa-files-o"></i> <span>Страницы</span>

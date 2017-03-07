@@ -6,7 +6,7 @@ Route::resource('/admin/articles', 'Admin\AdminControllerArticles');
 Route::resource('/admin/news', 'Admin\AdminControllerNews');
 Route::resource('/admin/comments', 'Admin\AdminControllerComments');
 Route::resource('/admin/boxes', 'Admin\AdminControllerBoxes');
-Route::resource('/admin/galery', 'Admin\AdminControllerGalery');
+Route::resource('/admin/gallery', 'Admin\AdminControllerGallery');
 
 Route::get('/home', 'HomeController@index');
 

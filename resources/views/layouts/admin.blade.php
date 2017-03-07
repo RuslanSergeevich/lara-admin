@@ -107,7 +107,7 @@
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="{{ url('/admin/galery') }}">
+                    <a href="{{ url('/admin/gallery') }}">
                         <i class="fa fa-fw fa-picture-o"></i> <span>Галерея</span>
                     </a>
                 </li>

@@ -2,84 +2,57 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use App\Pages;
+use Carbon\Carbon;
+use Request;
 
 class AdminControllerPages extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        return view('admin.views.pages.pages');
+        $pages = Pages::all();
+        return view('admin.views.pages.pages', compact('pages'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-
+        return view('admin.views.pages.create_pages');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $input = Request::all();
+        $input['published_at'] = Carbon::now();
+        Pages::create($input);
+        return redirect('admin/pages')->with('flash_message', 'Страница успешно создана!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $pages = Pages::findOrFail($id);
+        return view('admin.views.pages.edit_pages', compact('pages'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+
+        $pages = Pages::findOrFail($id);
+        $pages->update(Request::all());;
+        return redirect('admin/pages')->with('flash_message', 'Страница успешно отредактирована!');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $pages = Pages::findOrFail($id);
+        $pages->delete();
+        return redirect('admin/pages')->with('flash_message', 'Страница успешно удалена!');
+
     }
 }

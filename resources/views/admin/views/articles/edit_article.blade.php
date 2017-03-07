@@ -15,11 +15,11 @@
                     {!! Form::label('Title') !!}
                     {!! Form::text('title', $article->title, array('required', 'class'=>'form-control', 'placeholder'=>'Title cтатьи')) !!}<br/>
                     {!! Form::label('Keywords') !!}
-                    {!! Form::text('keywords', $article->keywords, array('required', 'class'=>'form-control', 'placeholder'=>'Keywords cтатьи')) !!}<br/>
+                    {!! Form::text('keywords', $article->keywords, array('class'=>'form-control', 'placeholder'=>'Keywords cтатьи')) !!}<br/>
                     {!! Form::label('Description') !!}
-                    {!! Form::text('description', $article->description, array('required', 'class'=>'form-control', 'placeholder'=>'Description cтатьи')) !!}<br/>
+                    {!! Form::text('description', $article->description, array('class'=>'form-control', 'placeholder'=>'Description cтатьи')) !!}<br/>
                     {!! Form::label('URL cтатьи') !!}
-                    {!! Form::text('url', $article->url, array('required', 'class'=>'form-control', 'placeholder'=>'URL cтатьи')) !!}<br/>
+                    {!! Form::text('url', $article->url, array('required', 'class'=>'form-control translit', 'placeholder'=>'URL cтатьи')) !!}<br/>
                     {!! Form::label('Название cтатьи') !!}
                     {!! Form::text('name', $article->name, array('required', 'class'=>'form-control', 'placeholder'=>'Название cтатьи')) !!}<br/>
                     {!! Form::label('Текст cтатьи') !!}

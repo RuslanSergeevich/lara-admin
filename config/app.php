@@ -12,7 +12,9 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Админ панель сайта',
+    'site_name' => 'В конфиге',
+    'site_name_short' => 'В',
 
     /*
     |--------------------------------------------------------------------------

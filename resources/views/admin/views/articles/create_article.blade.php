@@ -15,11 +15,11 @@
                     {!! Form::label('Title') !!}
                     {!! Form::text('title', null, array('required', 'class'=>'form-control', 'placeholder'=>'Title cтатьи')) !!}<br/>
                     {!! Form::label('Keywords') !!}
-                    {!! Form::text('keywords', null, array('required', 'class'=>'form-control', 'placeholder'=>'Keywords cтатьи')) !!}<br/>
+                    {!! Form::text('keywords', null, array('class'=>'form-control', 'placeholder'=>'Keywords cтатьи')) !!}<br/>
                     {!! Form::label('Description') !!}
-                    {!! Form::text('description', null, array('required', 'class'=>'form-control', 'placeholder'=>'Description cтатьи')) !!}<br/>
+                    {!! Form::text('description', null, array('class'=>'form-control', 'placeholder'=>'Description cтатьи')) !!}<br/>
                     {!! Form::label('URL cтатьи') !!}
-                    {!! Form::text('url', null, array('required', 'class'=>'form-control', 'placeholder'=>'URL cтатьи')) !!}<br/>
+                    {!! Form::text('url', null, array('required', 'class'=>'form-control translit', 'placeholder'=>'URL cтатьи')) !!}<br/>
                     {!! Form::label('Название cтатьи') !!}
                     {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Название cтатьи')) !!}<br/>
                     {!! Form::label('Текст cтатьи') !!}

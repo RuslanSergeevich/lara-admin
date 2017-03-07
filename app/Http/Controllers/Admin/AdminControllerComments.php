@@ -45,12 +45,6 @@ class AdminControllerComments extends Controller
         return redirect('admin/comments')->with('flash_message', 'Отзыв успешно отредактирован!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $comments = Comments::findOrFail($id);

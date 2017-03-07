@@ -15,11 +15,11 @@
                     {!! Form::label('Title') !!}
                     {!! Form::text('title', null, array('required', 'class'=>'form-control', 'placeholder'=>'Title новости')) !!}<br/>
                     {!! Form::label('Keywords') !!}
-                    {!! Form::text('keywords', null, array('required', 'class'=>'form-control', 'placeholder'=>'Keywords новости')) !!}<br/>
+                    {!! Form::text('keywords', null, array('class'=>'form-control', 'placeholder'=>'Keywords новости')) !!}<br/>
                     {!! Form::label('Description') !!}
-                    {!! Form::text('description', null, array('required', 'class'=>'form-control', 'placeholder'=>'Description новости')) !!}<br/>
+                    {!! Form::text('description', null, array('class'=>'form-control', 'placeholder'=>'Description новости')) !!}<br/>
                     {!! Form::label('URL новости') !!}
-                    {!! Form::text('url', null, array('required', 'class'=>'form-control', 'placeholder'=>'URL новости')) !!}<br/>
+                    {!! Form::text('url', null, array('required', 'class'=>'form-control translit', 'placeholder'=>'URL новости')) !!}<br/>
                     {!! Form::label('Название новости') !!}
                     {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Название новости')) !!}<br/>
                     {!! Form::label('Текст новости') !!}

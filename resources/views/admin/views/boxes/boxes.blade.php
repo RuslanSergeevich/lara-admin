@@ -23,36 +23,36 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Название</th>
-                                    <th>URL</th>
+                                    <th>Системное имя</th>
                                     <th>Дата изменения</th>
                                     <th>Публикация</th>
                                     <th>Действие</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($pages as $page)
+                                @foreach($boxes as $box)
                                     <tr>
-                                        <td>{{$page->id}}</td>
-                                        <td>{{$page->name}}</td>
-                                        <td>{{$page->url}}</td>
-                                        <td>{{$page->updated_at->format('d-m-Y h:i:s')}}</td>
-                                        <td>@if ($page->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
-                                        <td class="button-width"><a href="/admin/pages/{{$page->id}}/edit">
+                                        <td>{{$box->id}}</td>
+                                        <td>{{$box->name}}</td>
+                                        <td>{{$box->system_name}}</td>
+                                        <td>{{$box->updated_at->format('d-m-Y h:i:s')}}</td>
+                                        <td>@if ($box->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
+                                        <td class="button-width"><a href="/admin/boxes/{{$box->id}}/edit">
                                                 <button type="button" class="btn btn-primary">Редактировать</button></a>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$page->id}}">Удалить</button>
-                                            <div class="modal fade" id="{{$page->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$box->id}}">Удалить</button>
+                                            <div class="modal fade" id="{{$box->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel">Удалить страницу?</h4>
+                                                            <h4 class="modal-title" id="myModalLabel">Удалить блок?</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             После удаления восстановить будет невозможно! Продолжаем?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Закрыть</button>
-                                                            {!! Form::open(['method' => 'DELETE', 'action' => ['Admin\AdminControllerPages@destroy', $page->id]]) !!}
+                                                            {!! Form::open(['method' => 'DELETE', 'action' => ['Admin\AdminControllerPages@destroy', $box->id]]) !!}
                                                             {!! Form::submit('Удалить', array('class'=>'btn btn-danger')) !!}
                                                             {!! Form::close() !!}
                                                         </div>
@@ -67,14 +67,14 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Название</th>
-                                    <th>URL</th>
+                                    <th>Системное имя</th>
                                     <th>Дата изменения</th>
                                     <th>Публикация</th>
                                     <th>Действие</th>
                                 </tr>
                                 </tfoot>
                             </table>
-                            <a href="/admin/pages/create"><button type="button" class="btn btn-primary">Добавить страницу</button></a>
+                            <a href="/admin/boxes/create"><button type="button" class="btn btn-primary">Добавить блок</button></a>
                         </div>
                         <!-- /.box-body -->
                     </div>

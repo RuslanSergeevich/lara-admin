@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>{{ config('app.name') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -26,11 +26,11 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini">{{ config('app.site_name_short') }}</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg">{{ config('app.site_name') }}</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -111,6 +111,11 @@
                         <i class="fa fa-fw fa-picture-o"></i> <span>Галерея</span>
                     </a>
                 </li>
+                <li class="treeview">
+                    <a href="{{ url('/admin/boxes') }}">
+                        <i class="fa fa-fw fa-dropbox"></i> <span>Блоки сайта</span>
+                    </a>
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -143,6 +148,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('dist/js/demo.js') }}"></script>
 <!-- page script -->
+<script src="{{ URL::asset('js/jquery.liTranslit.js') }}"></script>
 <script>
     $(function () {
         $("#example1").DataTable();
@@ -154,6 +160,9 @@
             "info": true,
             "autoWidth": false
         });
+    });
+    $(function(){
+        $('.translit').liTranslit();
     });
 </script>
 </body>

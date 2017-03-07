@@ -15,11 +15,11 @@
                     {!! Form::label('Title') !!}
                     {!! Form::text('title', $news->title, array('required', 'class'=>'form-control', 'placeholder'=>'Title новости')) !!}<br/>
                     {!! Form::label('Keywords') !!}
-                    {!! Form::text('keywords', $news->keywords, array('required', 'class'=>'form-control', 'placeholder'=>'Keywords новости')) !!}<br/>
+                    {!! Form::text('keywords', $news->keywords, array('class'=>'form-control', 'placeholder'=>'Keywords новости')) !!}<br/>
                     {!! Form::label('Description') !!}
-                    {!! Form::text('description', $news->description, array('required', 'class'=>'form-control', 'placeholder'=>'Description новости')) !!}<br/>
+                    {!! Form::text('description', $news->description, array('class'=>'form-control', 'placeholder'=>'Description новости')) !!}<br/>
                     {!! Form::label('URL новости') !!}
-                    {!! Form::text('url', $news->url, array('required', 'class'=>'form-control', 'placeholder'=>'URL новости')) !!}<br/>
+                    {!! Form::text('url', $news->url, array('required', 'class'=>'form-control translit', 'placeholder'=>'URL новости')) !!}<br/>
                     {!! Form::label('Название новости') !!}
                     {!! Form::text('name', $news->name, array('required', 'class'=>'form-control', 'placeholder'=>'Название новости')) !!}<br/>
                     {!! Form::label('Текст новости') !!}

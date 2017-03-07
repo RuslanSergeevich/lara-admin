@@ -17,7 +17,7 @@ class CreateBoxesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('system_name');
-            $table->text('text');
+            $table->text('box_text');
             $table->char('published', 1);
             $table->timestamps();
         });

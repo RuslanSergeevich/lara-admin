@@ -148,6 +148,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('dist/js/demo.js') }}"></script>
 <!-- page script -->
+<script src="{{ URL::asset('js/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ URL::asset('js/jquery.liTranslit.js') }}"></script>
 <script>
     $(function () {
@@ -164,6 +165,8 @@
     $(function(){
         $('.translit').liTranslit();
     });
+    CKEDITOR.replace( 'text' );
+    CKEDITOR.replace( 'small_text' );
 </script>
 </body>
 </html>

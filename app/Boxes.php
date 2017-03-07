@@ -10,7 +10,7 @@ class Boxes extends Model
         'id',
         'system_name',
         'name',
-        'text',
+        'box_text',
         'published',
         'updated_at'
     ];

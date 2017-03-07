@@ -17,7 +17,7 @@
                     {!! Form::label('Название блока') !!}
                     {!! Form::text('name', $boxes->name, array('required', 'class'=>'form-control', 'placeholder'=>'Название блока')) !!}<br/>
                     {!! Form::label('Текст блока') !!}
-                    {!! Form::textarea('text', $boxes->text, array('required', 'class'=>'form-control', 'placeholder'=>'Текст блока')) !!}<br/>
+                    {!! Form::textarea('box_text', $boxes->text, array('required', 'class'=>'form-control', 'placeholder'=>'Текст блока')) !!}<br/>
                     {!! Form::label('Публикация блока') !!}<br/>
                     Опубликовано:
                     {!! Form::hidden('published', 0) !!}

@@ -16,7 +16,7 @@
                     {!! Form::label('Название блока') !!}
                     {!! Form::text('name', null, array('required', 'class'=>'form-control', 'placeholder'=>'Название блока')) !!}<br/>
                     {!! Form::label('Текст блока') !!}
-                    {!! Form::textarea('text', null, array('required', 'class'=>'form-control', 'placeholder'=>'Текст блока')) !!}<br/>
+                    {!! Form::textarea('box_text', null, array('required', 'class'=>'form-control', 'placeholder'=>'Текст блока')) !!}<br/>
                     {!! Form::label('Публикация блока') !!}<br/>
                     Опубликовано: {!! Form::checkbox('published', 1, array('class'=>'form-control')) !!}<br/><br/>
                     {!! Form::submit('Добавить блок', array('class'=>'btn btn-primary')) !!}<br/>

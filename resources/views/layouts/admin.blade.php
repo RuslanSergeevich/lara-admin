@@ -20,6 +20,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ URL::asset('dist/css/skins/_all-skins.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -154,6 +155,7 @@
 <!-- page script -->
 <script src="{{ URL::asset('js/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ URL::asset('js/jquery.liTranslit.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script>
     $(function () {
         $("#example1").DataTable();

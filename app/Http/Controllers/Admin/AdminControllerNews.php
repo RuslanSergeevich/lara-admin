@@ -45,7 +45,6 @@ class AdminControllerNews extends Controller
                 $constraint->aspectRatio();
             });
             $img->save($path);
-            $data['img'] = $timestamp. '-' .$file->getClientOriginalName();
         }else{
             $data['img']='';
         }

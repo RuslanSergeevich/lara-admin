@@ -35,7 +35,7 @@
                                         <td>{{$item->name}}</td>
                                         <td>{{$item->updated_at->format('d-m-Y h:i:s')}}</td>
                                         <td>@if ($item->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
-                                        <td class="button-width"><a href="/admin/boxes/{{$item->id}}/edit">
+                                        <td class="button-width"><a href="/admin/gallery/{{$item->id}}/edit">
                                                 <button type="button" class="btn btn-primary">Редактировать</button></a>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$item->id}}">Удалить</button>
                                             <div class="modal fade" id="{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -43,14 +43,14 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel">Удалить блок?</h4>
+                                                            <h4 class="modal-title" id="myModalLabel">Удалить Галерею?</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             После удаления восстановить будет невозможно! Продолжаем?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Закрыть</button>
-                                                            {!! Form::open(['method' => 'DELETE', 'action' => ['Admin\AdminControllerPages@destroy', $item->id]]) !!}
+                                                            {!! Form::open(['method' => 'DELETE', 'action' => ['Admin\AdminControllerGallery@destroy', $item->id]]) !!}
                                                             {!! Form::submit('Удалить', array('class'=>'btn btn-danger')) !!}
                                                             {!! Form::close() !!}
                                                         </div>

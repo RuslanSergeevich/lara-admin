@@ -46,7 +46,7 @@ class AdminControllerGallery extends Controller
     {
 
         $gallery = Gallery::findOrFail($id);
-        $gallery->update(Request::all());;
+        $gallery->update(Request::all());
         return redirect('admin/gallery')->with('flash_message', 'Галерея успешно отредактирована!');
     }
 
@@ -54,6 +54,32 @@ class AdminControllerGallery extends Controller
     public function destroy($id)
     {
 
+    }
+
+
+    public function edit_image()
+    {
+        $data = Request::all();
+        $image_edit = GalleryImage::findOrFail($data['img_id']);
+        if (!empty($data['title'])){
+            $image_edit->title = $data['title'];
+        }else{
+            $image_edit->title = '';
+        }
+        if (!empty($data['alt'])){
+            $image_edit->alt = $data['alt'];
+        }else{
+            $image_edit->alt = '';
+        }
+        if (isset($data['published'])){
+            $image_edit->published = $data['published'];
+        }else{
+            $image_edit->published = 0;
+        }
+
+        $image_edit->update();
+
+        return ('Успех! Данные сохранены!');
     }
 
     public function addphoto($id)

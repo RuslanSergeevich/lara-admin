@@ -157,6 +157,23 @@
 <script src="{{ URL::asset('js/jquery.liTranslit.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script>
+    $(document).ready(function() {
+        $(".submit_image_tags").click(function() {
+                var img_id =  $(this).closest('form').find('input[type=hidden][name=id]').val();
+                var alt = $(this).closest('form').find('input[type=text][name=alt]').val();
+                var title = $(this).closest('form').find('input[type=text][name=title]').val();
+                var published = $(this).closest('form').find('input:checked').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/gallery/edit_image",
+                    data: {'img_id':img_id, 'alt':alt, 'title':title, 'published':published, '_token':"{{csrf_token()}}" },
+                    success: function(msg){
+                       
+                    }
+                });
+                return false;
+        });
+    });
     $(function () {
         $("#example1").DataTable();
         $('#example2').DataTable({

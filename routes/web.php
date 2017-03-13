@@ -7,6 +7,7 @@ Route::resource('/admin/news', 'Admin\AdminControllerNews');
 Route::resource('/admin/comments', 'Admin\AdminControllerComments');
 Route::resource('/admin/boxes', 'Admin\AdminControllerBoxes');
 Route::resource('/admin/menu', 'Admin\AdminControllerMenu');
+Route::post('/admin/gallery/edit_image', 'Admin\AdminControllerGallery@edit_image');
 Route::post('/admin/gallery/{id}/addphoto', 'Admin\AdminControllerGallery@addphoto');
 Route::resource('/admin/gallery', 'Admin\AdminControllerGallery');
 

@@ -8,8 +8,12 @@ Route::resource('/admin/comments', 'Admin\AdminControllerComments');
 Route::resource('/admin/boxes', 'Admin\AdminControllerBoxes');
 Route::resource('/admin/menu', 'Admin\AdminControllerMenu');
 Route::post('/admin/gallery/edit_image', 'Admin\AdminControllerGallery@edit_image');
+Route::post('/admin/gallery/delete_image', 'Admin\AdminControllerGallery@delete_image');
 Route::post('/admin/gallery/{id}/addphoto', 'Admin\AdminControllerGallery@addphoto');
 Route::resource('/admin/gallery', 'Admin\AdminControllerGallery');
+Route::resource('/admin/modules', 'Admin\AdminModulesController');
+Route::resource('/admin/settings', 'Admin\AdminControllerSettings');
+Route::post('/admin/settings/save_settings', 'Admin\AdminControllerSettings@save_settings');
 
 
 Route::get('/home', 'HomeController@index');

@@ -53,7 +53,9 @@ class AdminControllerGallery extends Controller
 
     public function destroy($id)
     {
-
+        $gallery = Gallery::findOrFail($id);
+        $gallery->delete();
+        return redirect('admin/gallery')->with('flash_message', 'Галерея успешно удалена!');
     }
 
 
@@ -80,6 +82,15 @@ class AdminControllerGallery extends Controller
         $image_edit->update();
 
         return ('Успех! Данные сохранены!');
+    }
+
+    public function delete_image()
+    {
+        $data = Request::all();
+        $delete_image = GalleryImage::findOrFail($data['img_id']);
+        $delete_image->delete();
+
+        return ('Успех! Изображение удалено!');
     }
 
     public function addphoto($id)

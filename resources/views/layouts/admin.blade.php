@@ -9,6 +9,7 @@
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/pnotify.custom.min.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -84,44 +85,7 @@
                 </div>
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu">
-                <li class="header">Навигация</li>
-                <li class="treeview">
-                    <a href="{{ url('/admin/menu') }}">
-                        <i class="fa fa-fw fa-dropbox"></i> <span>Меню сайта</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="{{ url('/admin/pages') }}">
-                        <i class="fa fa-files-o"></i> <span>Страницы</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="{{ url('/admin/articles') }}">
-                        <i class="fa fa-fw fa-newspaper-o"></i> <span>Cтатьи</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="{{ url('/admin/news') }}">
-                        <i class="fa fa-fw fa-newspaper-o"></i> <span>Новости</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="{{ url('/admin/comments') }}">
-                        <i class="fa fa-fw fa-users"></i> <span>Отзывы</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="{{ url('/admin/gallery') }}">
-                        <i class="fa fa-fw fa-picture-o"></i> <span>Галерея</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="{{ url('/admin/boxes') }}">
-                        <i class="fa fa-fw fa-dropbox"></i> <span>Блоки сайта</span>
-                    </a>
-                </li>
-            </ul>
+            @include('layouts.menu')
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -155,9 +119,33 @@
 <!-- page script -->
 <script src="{{ URL::asset('js/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ URL::asset('js/jquery.liTranslit.js') }}"></script>
+<script src="{{ URL::asset('js/pnotify.custom.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script>
+
     $(document).ready(function() {
+        $(".submit_settings").click(function() {
+            var id =  $(this).closest('form').find('input[type=hidden][name=id]').val();
+            var phone1 = $(this).closest('form').find('input[type=text][name=phone1]').val();
+            var phone2 = $(this).closest('form').find('input[type=text][name=phone2]').val();
+            var phone3 = $(this).closest('form').find('input[type=text][name=phone3]').val();
+            var email = $(this).closest('form').find('input[type=text][name=email]').val();
+            var copyright = $(this).closest('form').find('input[type=text][name=copyright]').val();
+            var address = $(this).closest('form').find('[name=address]').val();
+            $.ajax({
+                type: "POST",
+                url: "/admin/settings/save_settings",
+                data: {'id':id, 'phone1':phone1, 'phone2':phone2, 'phone3':phone3, 'email':email, 'copyright':copyright, 'address':address, '_token':"{{csrf_token()}}" },
+                success: function(){
+                    new PNotify({
+                        title: 'Успех!',
+                        text: 'Данные сохранены!',
+                        type: 'success'
+                    });
+                }
+            });
+            return false;
+        });
         $(".submit_image_tags").click(function() {
                 var img_id =  $(this).closest('form').find('input[type=hidden][name=id]').val();
                 var alt = $(this).closest('form').find('input[type=text][name=alt]').val();
@@ -167,12 +155,35 @@
                     type: "POST",
                     url: "/admin/gallery/edit_image",
                     data: {'img_id':img_id, 'alt':alt, 'title':title, 'published':published, '_token':"{{csrf_token()}}" },
-                    success: function(msg){
-                       
+                    success: function(){
+                        new PNotify({
+                            title: 'Успех!',
+                            text: 'Данные сохранены!',
+                            type: 'success'
+                        });
                     }
                 });
                 return false;
         });
+        $(".delete_image").click(function() {
+            var img_id =  $(this).closest('form').find('input[type=hidden][name=id]').val();
+            var remove_image =  $(this).closest('form').find('input[type=hidden][name=class]').val();
+            $.ajax({
+                type: "POST",
+                url: "/admin/gallery/delete_image",
+                data: {'img_id':img_id, '_token':"{{csrf_token()}}" },
+                success: function(){
+                    new PNotify({
+                        title: 'Успех!',
+                        text: 'Изображение удалено!',
+                        type: 'info'
+                    });
+                    $(remove_image).remove();
+                }
+            });
+            return false;
+        });
+
     });
     $(function () {
         $("#example1").DataTable();

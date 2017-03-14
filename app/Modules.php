@@ -4,15 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Gallery extends Model
+class Modules extends Model
 {
-    protected $table = 'gallery';
-
     protected $fillable = [
         'id',
-        'name',
+        'title',
+        'url',
         'published',
-        'updated_at'
     ];
-
 }

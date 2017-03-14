@@ -8,7 +8,7 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Меню сайта</h3>
+                            <h3 class="box-title">Модули сайта</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -22,24 +22,30 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Название</th>
-                                    <th>Дата изменения</th>
+                                    <th>Название модуля</th>
                                     <th>Публикация</th>
+                                    <th>Действие</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                @foreach($modules as $module)
+                                    <tr>
+                                        <td>{{$module->id}}</td>
+                                        <td>{{$module->title}}</td>
+                                        <td>@if ($module->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
+                                        <td><a href="/admin/modules/{{$module->id}}/edit"><button type="button" class="btn btn-primary">Редактировать</button></a></td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Название</th>
-                                    <th>Дата изменения</th>
+                                    <th>Название модуля</th>
                                     <th>Публикация</th>
+                                    <th>Действие</th>
                                 </tr>
                                 </tfoot>
                             </table>
-                            <a href="admin/menu/create"><button type="button" class="btn btn-primary">Добавить пункт</button></a>
                         </div>
                         <!-- /.box-body -->
                     </div>

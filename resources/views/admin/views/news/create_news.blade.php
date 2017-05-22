@@ -17,7 +17,7 @@
                     {!! Form::label('Keywords') !!}
                     {!! Form::text('keywords', null, array('class'=>'form-control', 'placeholder'=>'Keywords новости')) !!}<br/>
                     {!! Form::label('Description') !!}
-                    {!! Form::text('description', null, array('class'=>'form-control', 'placeholder'=>'Description новости')) !!}<br/>
+                    {!! Form::text('description', null, array('required', 'class'=>'form-control', 'placeholder'=>'Description новости')) !!}<br/>
                     {!! Form::label('URL новости') !!}
                     {!! Form::text('url', null, array('required', 'class'=>'form-control translit', 'placeholder'=>'URL новости')) !!}<br/>
                     {!! Form::label('Изображение') !!}
@@ -42,3 +42,10 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
+
+@push('scripts')
+    <script>
+        CKEDITOR.replace( 'text' );
+        CKEDITOR.replace( 'small_text' );
+    </script>
+@endpush

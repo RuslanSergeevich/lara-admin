@@ -70,14 +70,14 @@ class DatabaseSeeder extends Seeder
             'published' => '1'
         ]);
         DB::table('settings')->insert([
-            'phone1' => 'null',
-            'phone2' => 'null',
-            'phone3' => 'null',
-            'email' => 'null',
-            'email2' => 'null',
-            'copyright' => 'null',
-            'address' => 'null',
-            'metrika' => 'null'
+            'phone1' => '',
+            'phone2' => '',
+            'phone3' => '',
+            'email' => '',
+            'email2' => '',
+            'copyright' => '',
+            'address' => '',
+            'metrika' => ''
 
         ]);
 

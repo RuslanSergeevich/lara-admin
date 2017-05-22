@@ -63,3 +63,47 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $(".submit_image_tags").click(function() {
+            var img_id =  $(this).closest('form').find('input[type=hidden][name=id]').val();
+            var alt = $(this).closest('form').find('input[type=text][name=alt]').val();
+            var title = $(this).closest('form').find('input[type=text][name=title]').val();
+            var published = $(this).closest('form').find('input:checked').val();
+            $.ajax({
+                type: "POST",
+                url: "/admin/gallery/edit_image",
+                data: {'img_id':img_id, 'alt':alt, 'title':title, 'published':published, '_token':"{{csrf_token()}}" },
+                success: function(){
+                    new PNotify({
+                        title: 'Успех!',
+                        text: 'Данные сохранены!',
+                        type: 'success'
+                    });
+                }
+            });
+            return false;
+        });
+        $(".delete_image").click(function() {
+            var img_id =  $(this).closest('form').find('input[type=hidden][name=id]').val();
+            var remove_image =  $(this).closest('form').find('input[type=hidden][name=class]').val();
+            $.ajax({
+                type: "POST",
+                url: "/admin/gallery/delete_image",
+                data: {'img_id':img_id, '_token':"{{csrf_token()}}" },
+                success: function(){
+                    new PNotify({
+                        title: 'Успех!',
+                        text: 'Изображение удалено!',
+                        type: 'info'
+                    });
+                    $(remove_image).remove();
+                }
+            });
+            return false;
+        });
+    });
+</script>
+@endpush

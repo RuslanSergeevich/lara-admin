@@ -31,7 +31,17 @@ class AdminControllerNews extends Controller
     {
         $news = new News;
         $data = Request::all();
+        if (empty($data['keywords'])) {
+            $data['keywords'] = '';
+        }
+        if (empty($data['text'])) {
+            $data['text'] = '';
+        }
+        if (empty($data['small_text'])) {
+            $data['small_text'] = '';
+        }
         $data['published_at'] = Carbon::now();
+        $data['updated_at'] = Carbon::now();
 
         if (Input::hasFile('img')){
             $file = Input::file('img');
@@ -64,8 +74,34 @@ class AdminControllerNews extends Controller
     public function update($id)
     {
 
+        $data = Request::all();
         $news = News::findOrFail($id);
-        $news->update(Request::all());
+
+        $news->title = $data['title'];
+        $news->description = $data['description'];
+        if (!empty($data['keywords'])){
+            $news->keywords = $data['keywords'];
+        }else{
+            $news->keywords = '';
+        }
+        $news->url = $data['url'];
+        $news->name = $data['name'];
+        $news->published = $data['published'];
+        $news->updated_at = Carbon::now();
+
+
+        if (!empty($data['text'])) {
+            $news->text = $data['text'];
+        }else{
+            $news->text = '';
+        }
+        if (!empty($data['small_text'])) {
+            $news->small_text = $data['small_text'];
+        }else{
+            $news->small_text = '';
+        }
+
+        $news->update();
 
         if (Input::hasFile('img')){
             $file = Input::file('img');

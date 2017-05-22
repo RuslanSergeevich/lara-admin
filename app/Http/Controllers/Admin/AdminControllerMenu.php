@@ -27,6 +27,24 @@ class AdminControllerMenu extends Controller
 
     }
 
+    public function create()
+    {
+        $type_list = array('0' => 'Тип не выбран', '1' => 'Страницы', '2' => 'Статьи', '3' => 'Новости');
+        $pages_list = Pages::all()->pluck('name', 'id')->toArray();
+        $articles_list = Articles::all()->pluck('name', 'id')->toArray();
+        $news_list = News::all()->pluck('name', 'id')->toArray();
+        return view('admin.views.menu.create_menu', compact('type_list', 'pages_list', 'articles_list', 'news_list'));
+    }
+
+
+    /*public function edit($id)
+    {
+        $news = News::findOrFail($id);
+        return view('admin.views.news.edit_news', compact('news'));
+    }*/
+
+    /**
+     * Update the specified resource in storage.
     /*public function edit($id)
     {
         $news = News::findOrFail($id);

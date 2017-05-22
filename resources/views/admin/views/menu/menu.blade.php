@@ -39,7 +39,7 @@
                                 </tr>
                                 </tfoot>
                             </table>
-                            <a href="admin/menu/create"><button type="button" class="btn btn-primary">Добавить пункт</button></a>
+                            <a href="/admin/menu/create"><button type="button" class="btn btn-primary">Добавить пункт</button></a>
                         </div>
                         <!-- /.box-body -->
                     </div>

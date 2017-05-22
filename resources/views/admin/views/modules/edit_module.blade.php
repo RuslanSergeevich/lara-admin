@@ -11,11 +11,13 @@
                     <h3 class="box-title">Редактирование модуля</h3>
                 </div>
                 <div class="box-body">
-                    {!! Form::open(['method' => 'PATCH',  'action' => ['Admin\AdminModulesController@update', $module->id]]) !!}
-                    {!! $module->title !!}<br/>
+                    {!! Form::model($module, ['method' => 'PATCH',  'action' => ['Admin\AdminModulesController@update', $module->id]]) !!}
+                    <h4>{!! $module->title !!}</h4><br/>
+                    {!! Form::label('Иконка пункта меню') !!}
+                    {!! Form::text('icon', old('icon'), array('required', 'class'=>'form-control', 'placeholder'=>'Название галереи')) !!}<br/>
                     Опубликовано:
                     {!! Form::hidden('published', 0) !!}
-                    {!! Form::checkbox('published', 1, $module->published) !!}<br/><br/>
+                    {!! Form::checkbox('published', 1, old('published')) !!}<br/><br/>
                     {!! Form::submit('Сохранить', array('class'=>'btn btn-primary')) !!}<br/>
                     {!! Form::close() !!}
                 </div>

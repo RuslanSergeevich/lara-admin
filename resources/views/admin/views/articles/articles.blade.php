@@ -38,8 +38,9 @@
                                         <td>{{$article->updated_at->format('d-m-Y h:i:s')}}</td>
                                         <td>@if ($article->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
                                         <td class="button-width"><a href="/admin/articles/{{$article->id}}/edit">
-                                            <button type="button" class="btn btn-primary">Редактировать</button></a>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$article->id}}">Удалить</button>
+                                            <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$article->id}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             <div class="modal fade" id="{{$article->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">

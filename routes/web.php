@@ -1,5 +1,14 @@
 <?php
 
+//Auth::routes();
+
+// Authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+
 Route::get('/admin', 'Admin\AdminControllerIndex@index');
 Route::resource('/admin/pages', 'Admin\AdminControllerPages');
 Route::resource('/admin/articles', 'Admin\AdminControllerArticles');
@@ -12,24 +21,17 @@ Route::post('/admin/gallery/delete_image', 'Admin\AdminControllerGallery@delete_
 Route::post('/admin/gallery/{id}/addphoto', 'Admin\AdminControllerGallery@addphoto');
 Route::resource('/admin/gallery', 'Admin\AdminControllerGallery');
 Route::resource('/admin/modules', 'Admin\AdminModulesController');
-Route::resource('/admin/settings', 'Admin\AdminControllerSettings');
+//Route::post('/admin/settings/edit_image', 'Admin\AdminControllerSettings@edit_image');
 Route::post('/admin/settings/save_settings', 'Admin\AdminControllerSettings@save_settings');
+Route::get('/admin/settings', 'Admin\AdminControllerSettings@index');
+
 
 
 Route::get('/home', 'HomeController@index');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-//Auth::routes();
-
-// Authentication Routes...
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/', 'PagesController@index');
+Route::get('/{url}', 'PagesController@page');
 
 // Registration Routes...
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');

@@ -33,7 +33,7 @@
                                         <td>{{$module->id}}</td>
                                         <td>{{$module->title}}</td>
                                         <td>@if ($module->published == 1)<span class="text-success">Да</span> @else <span class="text-danger">Нет</span> @endif </td>
-                                        <td><a href="/admin/modules/{{$module->id}}/edit"><button type="button" class="btn btn-primary">Редактировать</button></a></td>
+                                        <td><a href="/admin/modules/{{$module->id}}/edit"><button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

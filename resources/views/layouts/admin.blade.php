@@ -53,7 +53,6 @@
                             <!-- User image -->
                             <li class="user-header">
                                 <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
                                 <p>
                                     {{ Auth::user()->name }}
                                 </p>
@@ -120,87 +119,8 @@
 <script src="{{ URL::asset('js/ckeditor/ckeditor.js') }}"></script>
 <script src="{{ URL::asset('js/jquery.liTranslit.js') }}"></script>
 <script src="{{ URL::asset('js/pnotify.custom.min.js') }}"></script>
+<script src="{{ URL::asset('js/scripts.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
-<script>
-
-    $(document).ready(function() {
-        $(".submit_settings").click(function() {
-            var id =  $(this).closest('form').find('input[type=hidden][name=id]').val();
-            var phone1 = $(this).closest('form').find('input[type=text][name=phone1]').val();
-            var phone2 = $(this).closest('form').find('input[type=text][name=phone2]').val();
-            var phone3 = $(this).closest('form').find('input[type=text][name=phone3]').val();
-            var email = $(this).closest('form').find('input[type=text][name=email]').val();
-            var copyright = $(this).closest('form').find('input[type=text][name=copyright]').val();
-            var address = $(this).closest('form').find('[name=address]').val();
-            $.ajax({
-                type: "POST",
-                url: "/admin/settings/save_settings",
-                data: {'id':id, 'phone1':phone1, 'phone2':phone2, 'phone3':phone3, 'email':email, 'copyright':copyright, 'address':address, '_token':"{{csrf_token()}}" },
-                success: function(){
-                    new PNotify({
-                        title: 'Успех!',
-                        text: 'Данные сохранены!',
-                        type: 'success'
-                    });
-                }
-            });
-            return false;
-        });
-        $(".submit_image_tags").click(function() {
-                var img_id =  $(this).closest('form').find('input[type=hidden][name=id]').val();
-                var alt = $(this).closest('form').find('input[type=text][name=alt]').val();
-                var title = $(this).closest('form').find('input[type=text][name=title]').val();
-                var published = $(this).closest('form').find('input:checked').val();
-                $.ajax({
-                    type: "POST",
-                    url: "/admin/gallery/edit_image",
-                    data: {'img_id':img_id, 'alt':alt, 'title':title, 'published':published, '_token':"{{csrf_token()}}" },
-                    success: function(){
-                        new PNotify({
-                            title: 'Успех!',
-                            text: 'Данные сохранены!',
-                            type: 'success'
-                        });
-                    }
-                });
-                return false;
-        });
-        $(".delete_image").click(function() {
-            var img_id =  $(this).closest('form').find('input[type=hidden][name=id]').val();
-            var remove_image =  $(this).closest('form').find('input[type=hidden][name=class]').val();
-            $.ajax({
-                type: "POST",
-                url: "/admin/gallery/delete_image",
-                data: {'img_id':img_id, '_token':"{{csrf_token()}}" },
-                success: function(){
-                    new PNotify({
-                        title: 'Успех!',
-                        text: 'Изображение удалено!',
-                        type: 'info'
-                    });
-                    $(remove_image).remove();
-                }
-            });
-            return false;
-        });
-
-    });
-    $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
-        });
-    });
-    $(function(){
-        $('.translit').liTranslit();
-    });
-    CKEDITOR.replace( 'text' );
-    CKEDITOR.replace( 'small_text' );
-</script>
+@stack('scripts')
 </body>
 </html>

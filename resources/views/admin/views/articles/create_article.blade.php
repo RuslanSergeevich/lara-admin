@@ -17,7 +17,7 @@
                     {!! Form::label('Keywords') !!}
                     {!! Form::text('keywords', null, array('class'=>'form-control', 'placeholder'=>'Keywords cтатьи')) !!}<br/>
                     {!! Form::label('Description') !!}
-                    {!! Form::text('description', null, array('class'=>'form-control', 'placeholder'=>'Description cтатьи')) !!}<br/>
+                    {!! Form::text('description', null, array('required', 'class'=>'form-control', 'placeholder'=>'Description cтатьи')) !!}<br/>
                     {!! Form::label('URL cтатьи') !!}
                     {!! Form::text('url', null, array('required', 'class'=>'form-control translit', 'placeholder'=>'URL cтатьи')) !!}<br/>
                     {!! Form::label('Изображение') !!}
@@ -42,3 +42,10 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
+
+@push('scripts')
+    <script>
+        CKEDITOR.replace( 'text' );
+        CKEDITOR.replace( 'small_text' );
+    </script>
+@endpush

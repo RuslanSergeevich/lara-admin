@@ -10,6 +10,7 @@ class Modules extends Model
         'id',
         'title',
         'url',
+        'icon',
         'published',
     ];
 }

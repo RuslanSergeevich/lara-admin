@@ -15,6 +15,6 @@ class Settings extends Model
         'email2',
         'address',
         'copyright',
-        'metrika'
+        'metrika',
     ];
 }

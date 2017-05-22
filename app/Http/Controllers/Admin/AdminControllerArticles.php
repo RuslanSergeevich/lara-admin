@@ -32,7 +32,17 @@ class AdminControllerArticles extends Controller
 
         $article = new Articles;
         $data = Request::all();
+        if (empty($data['keywords'])) {
+            $data['keywords'] = '';
+        }
+        if (empty($data['text'])) {
+            $data['text'] = '';
+        }
+        if (empty($data['small_text'])) {
+            $data['small_text'] = '';
+        }
         $data['published_at'] = Carbon::now();
+        $data['updated_at'] = Carbon::now();
 
         if (Input::hasFile('img')){
             $file = Input::file('img');
@@ -62,10 +72,36 @@ class AdminControllerArticles extends Controller
         return view('admin.views.articles.edit_article', compact('article'));
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
+        $data = Request::all();
         $article = Articles::findOrFail($id);
-        $article->update(Request::all());
+
+        $article->title = $data['title'];
+        $article->description = $data['description'];
+        if (!empty($data['keywords'])){
+            $article->keywords = $data['keywords'];
+        }else{
+            $article->keywords = '';
+        }
+        $article->url = $data['url'];
+        $article->name = $data['name'];
+        $article->published = $data['published'];
+        $article->updated_at = Carbon::now();
+
+
+        if (!empty($data['text'])) {
+            $article->text = $data['text'];
+        }else{
+            $article->text = '';
+        }
+        if (!empty($data['small_text'])) {
+            $article->small_text = $data['small_text'];
+        }else{
+            $article->small_text = '';
+        }
+
+        $article->update();
 
         if (Input::hasFile('img')){
             $file = Input::file('img');
